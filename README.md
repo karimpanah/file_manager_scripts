@@ -1,47 +1,48 @@
 # 🔀 Batch File Renamer
 
-A simple yet powerful Python script to rename files in a target folder based on the filenames in a source folder, while intelligently preserving the original file extensions.
+A simple yet powerful Python script to rename files in a target folder based on the filenames in a source folder, while intelligently preserving the original file extensions of the target files.
 
 ---
 
-### 🤔 What's the Problem?
+### 🤔 The Problem it Solves
 
-Ever had two folders of related files with inconsistent naming?
-* `Folder A` (Source): `Project_Report_Final.txt`, `Data_Analysis.xlsx`, `Presentation_Slides.pptx`
-* `Folder B` (Target): `DOC001.pdf`, `sheet_v2.csv`, `slides_draft.key`
+Imagine you have two folders with related, but inconsistently named, files:
 
-You want the files in `Folder B` to match the names from `Folder A`, but keep their original extensions (`.pdf`, `.csv`, `.key`). Doing this manually for hundreds of files is a nightmare. This script automates that nightmare away.
+* **`Source Folder`** (contains the correct names):
+    * `Project_Report_Final.txt`
+    * `Data_Analysis.xlsx`
+    * `Presentation_Slides.pptx`
+
+* **`Target Folder`** (contains the files you want to rename):
+    * `DOC001.pdf`
+    * `sheet_v2.csv`
+    * `slides_draft.key`
+
+You want the files in the `Target Folder` to match the names from the `Source Folder` but **keep their own extensions** (e.g., you want `DOC001.pdf` to become `Project_Report_Final.pdf`). Renaming hundreds of files like this manually is tedious and prone to errors. This script automates that process.
 
 ### ✨ How It Works
 
-The script operates on a simple, powerful principle:
+The script's logic is straightforward and effective:
 
-> It takes the **filename (without extension)** from the `source` folder and combines it with the **extension** from the `target` folder.
+> It takes the **filename stem** (the name without the extension) from the `source` folder and combines it with the **extension** from the `target` folder.
 
-This is done based on the alphabetically sorted order of files in both directories.
+This operation is performed based on the alphabetically sorted order of files in both directories, ensuring a predictable pairing.
 
 ### 🚀 Features
 
 * **Name Syncing:** Synchronizes filenames between two directories.
-* **Extension Preservation:** Never alters the original file extensions in the target folder.
-* **Safe Operation:** Only renames as many files as are available in the smaller of the two folders.
-* **Clear Logging:** Prints every rename operation to the console for full transparency.
-* **Robust Error Handling:** Built to handle missing folders and other potential issues gracefully.
+* **Extension Preservation:** Intelligently keeps the original file extensions in the target folder. This is its key feature.
+* **Safe Operation:** Only renames as many files as are available in the smaller of the two folders to prevent errors.
+* **Clear Logging:** Prints every single rename operation to the console so you can see exactly what's happening.
+* **Robust Error Handling:** Gracefully handles issues like missing folders.
 
-### 🔧 Getting Started
+### 🔧 How to Use
 
-This script requires **Python 3.6+** (due to `pathlib`). No external libraries are needed.
+**⚠️ IMPORTANT: Always create a backup of your target folder before running this script. The renaming operation is irreversible.**
 
-1.  Clone this repository or download the `batch_file_renamer.py` script.
-2.  Place your source and target folders where you can easily access them.
-
-### 💡 Usage
-
-**⚠️ IMPORTANT: Always back up your target folder before running this script. The renaming operation is irreversible.**
-
-1.  Open the script (`batch_file_renamer.py`) in a text editor.
+1.  Open the script (`your_script_name.py`) in any code editor.
 2.  Navigate to the bottom of the file, inside the `if __name__ == "__main__":` block.
-3.  Modify these two lines to point to your folders:
+3.  Modify the `source` and `target` variables to point to your actual folder paths:
 
     ```python
     # Example usage:
@@ -55,10 +56,10 @@ This script requires **Python 3.6+** (due to `pathlib`). No external libraries a
 4.  Save the file and run it from your terminal:
 
     ```bash
-    python batch_file_renamer.py
+    python your_script_name.py
     ```
 
-**Example Output:**
+#### Example Output:
 
 ```
 Renamed: DOC001.pdf -> Project_Report_Final.pdf
@@ -70,4 +71,4 @@ Total files renamed: 3/3
 
 ### 📜 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
